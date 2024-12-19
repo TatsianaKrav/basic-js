@@ -28,30 +28,17 @@ function getSeason(date) {
     throw new Error("Invalid date!");
   }
 
-  const monthName = date.toLocaleString("default", { month: "long" });
+  const month = date.getMonth();
   let season = "";
 
-  switch (monthName) {
-    case "март":
-    case "апрель":
-    case "май":
-      season = "spring";
-      break;
-    case "июнь":
-    case "июль":
-    case "август":
-      season = "summer";
-      break;
-    case "сентябрь":
-    case "октябрь":
-    case "ноябрь":
-      season = "autumn";
-      break;
-    case "декабрь":
-    case "январь":
-    case "февраль":
-      season = "winter";
-      break;
+  if (month === 11 || month === 0 || month === 1) {
+    season = "winter";
+  } else if (month >= 2 && month <= 4) {
+    season = "spring";
+  } else if (month >= 5 && month <= 7) {
+    season = "summer";
+  } else {
+    season = "autumn";
   }
 
   return season;
